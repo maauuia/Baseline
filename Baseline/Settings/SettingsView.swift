@@ -11,8 +11,10 @@ final class AuthenticationManagerModel: ObservableObject{ //talks through @State
 
 
 struct SettingsView: View {
+    
     @StateObject private var viewModel = AuthenticationManagerModel() //variable view model
-    @Binding var showSignInView: Bool //variable boolean
+    @EnvironmentObject var auth: AuthStateManager //passes as environment - reacts to change
+    
     var body: some View {
         NavigationStack{
             VStack{
@@ -24,8 +26,8 @@ struct SettingsView: View {
                         Button { //log out of account
                             Task {
                                 do {
-                                    try viewModel.logOut()
-                                    showSignInView = true // makes showSignInView true
+                                    try auth.signOut() //function called
+
                                 } catch {
                                     print(error)
                                 }
@@ -58,10 +60,8 @@ struct SettingsView: View {
                 .navigationTitle("Settings") //title on top of screen
             }
         }
-        .fullScreenCover(isPresented: $showSignInView) { //if the existing account is found is equal to true then user is sent to matches page
-            AuthenticationView()
-            
-        }
+
     }
     
 }
+

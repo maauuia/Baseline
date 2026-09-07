@@ -59,7 +59,7 @@ struct AuthenticationView: View {
             }
             
             .padding()
-            .navigationTitle("Register")
+            .navigationTitle("‎ ")
             // make nav title white
         }
         

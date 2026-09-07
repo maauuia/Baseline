@@ -1,29 +1,36 @@
 import SwiftUI
 
+
 struct RootView: View {
-    @State private var showSignInView: Bool = false //private variable showSignInView is set to false
-    
+
+
+    @StateObject private var auth = AuthStateManager()
+    @StateObject private var themeManager = ThemeManager()
+
     var body: some View {
-        ZStack {
-            NavigationStack {
-                SettingsView(showSignInView: $showSignInView) //default screen
+
+        Group {
+            if auth.isSignedIn {
+                NavigationView {  //if signed in, content view is shown
+                    ContentView()
+                }
+            } else {
+                NavigationView { //if not signed in, authentication view is shown
+                    AuthenticationView()
+                }
+               
             }
         }
-        .onAppear {
-            let authUser = AuthenticationManager.shared.getAuthenticatedUser() //checks if user is signed in
-            self.showSignInView = authUser == nil
-        }
-        .fullScreenCover(isPresented: $showSignInView) { //completely replaces page with the log in view
-            NavigationStack {
-                AuthenticationView()
-            }
-        }
+        //these can be accessed anywhere
+        .environmentObject(auth) // allows it to be accessed in SettingsView
+        .environmentObject(themeManager) //for global themes
     }
 }
 
 struct RootView_Previews: PreviewProvider {
     static var previews: some View {
         RootView() //preview - can be ignored
+            .environmentObject(AuthStateManager()) //only for testing, and so the preview does not crash when canvas is used
     }
 }
 

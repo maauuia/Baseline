@@ -1,17 +1,16 @@
-//
-//  BaselineApp.swift
-//  Baseline
-//
-//  Created by maria on 30/10/2025.
-//
-
 import SwiftUI
+import FirebaseCore
 
 @main
 struct BaselineApp: App {
+    @StateObject private var themeManager = ThemeManager()
+    init() {
+        FirebaseApp.configure()
+    }
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RootView()
+                
         }
     }
 }

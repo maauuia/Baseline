@@ -6,7 +6,7 @@ struct NavigationBar: View {
     
     var body: some View {
         TabView{ //Tab bar
-            MatchhomeView()
+            MatchHomeView()
             // For the Match icons
                 .tabItem{
                     Label("Matches", systemImage: "figure.tennis") //icon graphics
@@ -16,7 +16,7 @@ struct NavigationBar: View {
                     Label("Profiles", systemImage: "person.fill")
                 }
             
-            SettingsView (showSignInView: .constant(false))
+            SettingsView ()
                 .tabItem{
                     Label("Settings", systemImage: "gear")
                 }

@@ -1,24 +1,14 @@
-//
-//  ContentView.swift
-//  Baseline
-//
-//  Created by maria on 30/10/2025.
-//
-
+import SwiftUI
+import FirebaseAuth
 import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+        NavigationBar() 
     }
 }
 
 #Preview {
     ContentView()
 }
+

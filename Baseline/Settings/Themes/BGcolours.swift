@@ -19,6 +19,9 @@ let darkGreen = Color(red: 0.196, green: 0.31, blue: 0.29)
 let darkSage = Color(red: 0.267, green: 0.349, blue: 0.278)
 let darkBlue = Color(red: 0.251, green: 0.471, blue: 0.549)
 
+let systemLight = Color(red: 1.0, green: 1.0, blue: 1.0)
+let systemDark = Color(red: 0.1098, green: 0.1098, blue: 0.1176)
+
 let themeColors = [
     ColorItem(name: "Light Orange", color: lightOrange),
     ColorItem(name: "Light Creme", color: lightCreme),
@@ -30,5 +33,7 @@ let themeColors = [
     ColorItem(name: "Dark Green", color: darkGreen),
     ColorItem(name: "Dark Sage", color: darkSage),
     ColorItem(name: "Dark Blue", color: darkBlue),
+    ColorItem(name: "System Light", color: systemLight),
+    ColorItem(name: "System Dark", color: systemDark)
 ]
 

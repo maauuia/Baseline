@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ManualTableOptions: View {
-    let pages = ["Manual 1","Manual 2","Manual 3"]
+    let pages = ["How to add & edit a profile","Creating matches","Point counter function"]
     
     @ViewBuilder
     func destinationView(for index: Int) -> some View {

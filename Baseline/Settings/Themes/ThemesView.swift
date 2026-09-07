@@ -4,27 +4,27 @@ import SwiftUI
 
 
 struct ThemesView: View {
-    @State private var selectedColor: Color = themeColors.first!.color
+    @EnvironmentObject var themeManager: ThemeManager
     
     var body: some View {
         NavigationStack {
             ZStack {
-                GradientBackground(primaryColor: selectedColor)
+                
                 VStack (alignment: .leading) {
-                    List(themeColors) { item in HStack {
+                    List(themeColors) { item in HStack { //shows all colours from BGcolours
                         Text(item.name)
                         
                         Spacer()
                         
-                        if item.color == selectedColor {
-                            Image(systemName: "checkmark")
+                        if item.color == themeManager.selectedColor { //if item is equal to colour chosen
+                            Image(systemName: "checkmark") //add a checkmark
                                 .foregroundColor(.blue)
                         }
                     }
                     .contentShape(Rectangle()) // Makes the entire row tappable
                     .onTapGesture {
-                        selectedColor = item.color
-                    }
+                        themeManager.selectedColor = item.color
+                        }
                     }
                     .scrollContentBackground(.hidden)
                 }
